@@ -1,0 +1,21 @@
+// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+{
+	"name": "Java 8",
+	"dockerFile": "Dockerfile",
+	"runArgs": ["--network", "spring-testing", "-v","/var/run/docker.sock:/var/run/docker.sock"],
+	// Uncomment the next line if you want to publish any ports.
+	// "appPort": [],
+
+	// Uncomment the next line to run commands after the container is created.
+	// "postCreateCommand": "java -version",
+
+	"extensions": [
+		"vscjava.vscode-java-pack"
+	],
+	"settings": {
+		"java.home": "/docker-java-home",
+		"remote.extensionKind": {
+			"ms-azuretools.vscode-docker": "workspace"
+		}
+	}
+}
