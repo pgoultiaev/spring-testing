@@ -10,7 +10,8 @@
 	// "postCreateCommand": "java -version",
 
 	"extensions": [
-		"vscjava.vscode-java-pack"
+		"vscjava.vscode-java-pack",
+		"alexkrechik.cucumberautocomplete"
 	],
 	"settings": {
 		"java.home": "/docker-java-home",
