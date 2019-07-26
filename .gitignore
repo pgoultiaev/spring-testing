@@ -2,6 +2,9 @@
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 bin
+target
+.DS_Store
+.vscode
 
 ### STS ###
 .apt_generated

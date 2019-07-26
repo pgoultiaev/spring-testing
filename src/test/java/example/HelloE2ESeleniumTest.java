@@ -11,8 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -38,10 +38,10 @@ public class HelloE2ESeleniumTest {
         chromeOptions.addArguments("--no-sandbox"); // Bypass OS security model, MUST BE THE VERY FIRST OPTION
         chromeOptions.setHeadless(true);
         chromeOptions.setExperimentalOption("useAutomationExtension", false);
-        chromeOptions.addArguments("start-maximized"); // open Browser in maximized mode
+        // chromeOptions.addArguments("start-maximized"); // open Browser in maximized mode
         chromeOptions.addArguments("disable-infobars"); // disabling infobars
         chromeOptions.addArguments("--disable-extensions"); // disabling extensions
-        chromeOptions.addArguments("--disable-gpu"); // applicable to windows os only
+        // chromeOptions.addArguments("--disable-gpu"); // applicable to windows os only
         chromeOptions.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver(chromeOptions);
     }

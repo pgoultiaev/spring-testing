@@ -1,19 +1,27 @@
 buildscript {
 	ext {
-		springBootVersion = '1.5.3.RELEASE'
+		springBootVersion = '2.1.6.RELEASE'
 	}
 	repositories {
 		mavenCentral()
+		maven {
+      		url "https://plugins.gradle.org/m2/"
+    	}
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("net.serenity-bdd:serenity-gradle-plugin:2.0.60")
+		classpath "io.spring.gradle:dependency-management-plugin:1.0.8.RELEASE"
 	}
 }
 
+apply plugin: 'io.spring.dependency-management'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'net.serenity-bdd.aggregator'
+
 
 version = '0.0.1-SNAPSHOT'
 
@@ -27,16 +35,22 @@ repositories {
 	mavenCentral()
 }
 
+test {
+	beforeTest { testDescriptor ->
+		println "${testDescriptor.className} > ${testDescriptor.name} STARTED"
+	}
+}
+
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter')
-	compile('org.springframework.boot:spring-boot-starter-web') {
+	compile('org.springframework.boot:spring-boot-starter:2.1.6.RELEASE')
+	compile('org.springframework.boot:spring-boot-starter-web:2.1.6.RELEASE') {
 		exclude module: 'spring-boot-starter-tomcat'
 	}
-	compile("org.springframework.boot:spring-boot-starter-jetty")
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile("org.springframework.boot:spring-boot-starter-jetty:2.1.6.RELEASE")
+	compile('org.springframework.boot:spring-boot-starter-data-jpa:2.1.6.RELEASE')
 	compile('org.postgresql:postgresql:42.1.1')
 
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.springframework.boot:spring-boot-starter-test:2.1.6.RELEASE')
 	testCompile('com.h2database:h2')
 	testCompile('io.rest-assured:rest-assured:3.0.3')
 	testCompile('com.github.tomakehurst:wiremock:2.6.0')
@@ -46,4 +60,12 @@ dependencies {
 	testCompile('au.com.dius:pact-jvm-consumer-junit_2.12:3.5.5')
 	testCompile('au.com.dius:pact-jvm-provider-spring_2.12:3.5.5')
 	testCompile('io.github.bonigarcia:webdrivermanager:3.3.0')
+
+	testCompile('net.serenity-bdd:serenity-core:2.0.60')
+    testCompile('net.serenity-bdd:serenity-junit:2.0.60')
+	testCompile('net.serenity-bdd:serenity-screenplay:2.0.60')
+    testCompile('net.serenity-bdd:serenity-screenplay-webdriver:2.0.60')
+    testCompile('net.serenity-bdd:serenity-cucumber:1.9.43')
+	testCompile('net.serenity-bdd:serenity-spring:2.0.60')
 }
+gradle.startParameter.continueOnFailure = true
