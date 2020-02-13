@@ -38,11 +38,8 @@ public class UserSteps {
         chromeOptions.addArguments("--no-sandbox"); // Bypass OS security model, MUST BE THE VERY FIRST OPTION
         chromeOptions.setHeadless(true);
         chromeOptions.setExperimentalOption("useAutomationExtension", false);
-        // chromeOptions.addArguments("start-maximized"); // open Browser in maximized
-        // mode
         chromeOptions.addArguments("disable-infobars"); // disabling infobars
         chromeOptions.addArguments("--disable-extensions"); // disabling extensions
-        // chromeOptions.addArguments("--disable-gpu"); // applicable to windows os only
         chromeOptions.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver(chromeOptions);
     }
@@ -54,7 +51,7 @@ public class UserSteps {
 
     @Step
     @Screenshots
-    public void visitsHomepage() {
+    public void visitsHelloPage() {
         setUpDriver();
         driver.navigate().to(String.format("http://localhost:%s/hello", port));
         body = driver.findElement(By.tagName("body")).getText();

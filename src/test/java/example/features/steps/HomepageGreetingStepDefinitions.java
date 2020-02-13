@@ -15,9 +15,9 @@ public class HomepageGreetingStepDefinitions {
         user.hasLastName(name);
     }
 
-    @When("I visit the homepage")
-    public void visitsHomepage() {
-        user.visitsHomepage();
+    @When("I visit the hello page")
+    public void visitsHelloPage() {
+        user.visitsHelloPage();
     }
 
     @Then("I should see (.*)")

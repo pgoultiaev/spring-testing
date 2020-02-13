@@ -6,5 +6,5 @@ Feature: Homepage greeting
 
   Scenario: Should greet user
     Given My last name is world
-    When I visit the homepage
+    When I visit the hello page
     Then I should see hello World
